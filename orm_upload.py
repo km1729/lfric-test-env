@@ -9,26 +9,25 @@ p = pathlib.Path(file_input_path)
 f_list = list(p.glob('**/*.txt'))
 
 # model configuration
-model_name = 'gungho'
+model_name = 'atm'
 num_procss = '6'
 num_thread='1'
 model_resolution='c16_dt3600'
 configuration='canned'
 
-isExist_model = session.query(model_config.id).filter(model_config.model == model_name, \
+isExist_model = session.query(model_config).filter(\
+            model_config.model == model_name, \
             model_config.resolution == model_resolution, \
-            model_config.thread == num_thread, model_config.process == num_procss, \
-            model_config.config == configuration).one_or_none()
-print(f'isExsit: {isExist_model}')
-print(type(isExist_model))
-
+            model_config.thread == num_thread, \
+            model_config.process == num_procss, \
+            model_config.config == configuration).all()
 
 new_model = model_config(model=model_name, resolution=model_resolution,\
     thread=num_thread, process=num_procss, config=configuration)
 
-if isExist_model is None:
+if isExist_model==[]:
     session.add(new_model)
-    print(f'new model {model_name}added')
+    print(f'new model {model_name} added')
     session.commit()
 
 # for file in f_list: 
