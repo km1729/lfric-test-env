@@ -1,7 +1,0 @@
-sqlalchemy
-sqlalchemy-utils
-sqlite
-jupyter
-pandas
-matplotlib
-scikit-learn

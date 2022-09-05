@@ -19,13 +19,12 @@ services:
       # - ./db/values.sql:/docker-entrypoint-initdb.d/values.sql
     
   jupyterlab:
-    image: jupyter/scipy-notebook
+    build: .
     command: start-notebook.sh
     ports:
-     - 8889:8888
+     - 8888:8888
     volumes:
       - ./code:/home/jovyan/work
-
   
 volumes:
   postgres:
