@@ -1,0 +1,12 @@
+apiVersioin: v1
+kind: Pod
+meta:
+  name: hello-pd
+  labels:
+    app: hello
+spec:
+  containers:
+  - name: hello-container
+    image: tmkube/hello
+    ports:
+     - containerPort: 8000
