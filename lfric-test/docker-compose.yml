@@ -19,7 +19,7 @@ services:
       # - ./db/values.sql:/docker-entrypoint-initdb.d/values.sql
     
   jupyterlab:
-    image: jupyter/scipy-notebook
+    image: docker.io/jupyter/scipy-notebook:latest
     command: start-notebook.sh
     ports:
      - 8889:8888
