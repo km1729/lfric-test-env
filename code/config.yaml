@@ -1,0 +1,23 @@
+timerFile : ./suite_control.rc
+#'/scratch/hc46/hc46_gitlab/cylc-run'
+
+filePath:
+  lfric:
+    rcFile : /scratch/hc46/hc46_gitlab/cylc-run/lfric_atm_nightly/suite_control.rc
+    revFile : /scratch/hc46/hc46_gitlab/cylc-run/lfric_atm_nightly/revision
+
+  gungho:
+    rcFile : /scratch/hc46/hc46_gitlab/cylc-run/gungho_nightly/suite_control.rc
+    revFileh : /scratch/hc46/hc46_gitlab/cylc-run/gungho_nightly/revision
+
+expressions:
+  nightlysetup: r'(?:\'nightly\':\s\[)([\s\S\w]+)(?:\'performance\')'
+
+  modelConfiguration:
+    configuration : r'(?:run_gungho_|run_lfric_atm_)+([a-z0-9_.-]+[^_A-Z])'
+    modelReolustion : r'([A-Z]+[.\d_\w-]+)(?:_intel|_gnu|_cray)'
+    compiler : r'intel|gnu|cray'
+    optimizationLevel : r'fast-debug$|full-debug$'
+    mpi : r'(?:mpi_parts\":\b)(\d{1,3})'
+    thread : r'(?:threads\":\b)(\d{1,3})'
+
