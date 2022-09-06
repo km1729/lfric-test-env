@@ -285,5 +285,6 @@ dependencies:
   - zlib-ng=2.0.6=h166bdaf_0
   - zstd=1.5.2=h6239696_4
   - pip:
+    - psycopg2
     - sqlalchemy-utils==0.38.3
 prefix: /opt/conda

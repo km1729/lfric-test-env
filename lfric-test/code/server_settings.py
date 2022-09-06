@@ -1,6 +1,6 @@
 postgresql = {'pguser':'postgres',
               'pgpasswd':1234,
-              'pghost':'localhost',
+              'pghost':'postgres',
               'pgport': 5432,
               'pgdb': 'postgres'
              }
