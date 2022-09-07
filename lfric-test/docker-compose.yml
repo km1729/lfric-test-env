@@ -18,7 +18,10 @@ services:
       # copy the sql script to create tables
       - ./sql/create-tables.sql:/docker-entrypoint-initdb.d/schema.sql
       # copy the sql script to insert demo values
-      # - ./sql/values.sql:/docker-entrypoint-initdb.d/values.sql
+      - ./sql/values.sql:/docker-entrypoint-initdb.d/values.sql
+      # local host timezone & localtime info update
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     
   jupyterlab:
 
@@ -28,6 +31,11 @@ services:
      - 8888:8888
     volumes:
       - ./code:/home/jovyan/work
+      # local host timezone & localtime info update
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+    - JUPYTER_TOKEN=easy
   
 volumes:
   postgres:
